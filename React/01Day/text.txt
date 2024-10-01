@@ -1,0 +1,7 @@
+What is NPM?
+What is React?
+Library vs framework
+Understanding React folder skeleton
+Understanding NPM packages
+What is Single page application (SPA)?
+Setting up react project using Vite

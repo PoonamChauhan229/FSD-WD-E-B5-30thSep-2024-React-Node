@@ -1,0 +1,76 @@
+Choose 1 folder >> Open that folder in VS code >> Open the Terminal
+npm create vite@latest project_name
+Proceed  >>>Y
+Select FrameWork >> React
+Select Variant   >> javascript
+cd project_name
+npm install
+npm run dev
+____________________
+ Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+  // npm  >> node package manager  >> npm install 
+// Library & Framework   React(Lib) || Angular(Framework)
+// Skleton 
+  
+  
+  node_modules
+  public
+  src >> source folder  
+        >> assests (image)
+        >> App.jsx  (Root file) 
+        >> App.css
+
+
+React > StateFul and StateLess Components
+
+Javascript:
+Functions
+Class
+
+React:(2013)
+StateLess : Functional Components  >> Use this and learn this
+StateFul  : Class Components       >> Overview 
+
+React >> Class Components >> It could manage the State (Managing the data)
+      >> Functional Components >> Hooks (2019) >> React Became very very popular 
+
+
+Functional Components
+>> Nothing but functions 
+
+Root >> App.jsx
+function App(){
+  let sum=2+2 
+  return sum
+}
+let a=App()
+console.log(a+22)
+
+// params +args
+parameters >> when u write u pass parameters
+arguments >> when u call function args
+
+function add(num1,num2){>> parameters
+  //code 
+}
+add(3,2)>> args
+
+
+javascript + html  >> JSX >> Javascript XML
+Javascript XML: Allows us to write HTML like code inside our JS 
+
+
+1 JSX element
+Did you want a JSX fragment
+<></>
+
+
+Props >> Properties 
+// args >> props 
+// reveice >> functions 
+
+
+
