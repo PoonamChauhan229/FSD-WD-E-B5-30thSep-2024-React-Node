@@ -1,20 +1,28 @@
 
 import './App.css'
-import TestCode from './Components/TestCode'
+import ProfilePropsDisplay from './Components/ProfilePropsDisplay'
+import Test2Code from './Components/Test2Code'
+import ProfileMapDisplay from './Components/ProfileMapDisplay'
+import ProfileSpreadMapDisplay from './Components/ProfileSpreadMapDisplay'
+
 function App() {
-  let name="Anjali"// own name
+ 
+  
   return (
     <div>
-      <TestCode  lname={"Geek"} fname={"Pvt Ltd"}/>
-      {/* {TestCode()} */}
-      <TestCode lname={"Harish"} fname={"xyz"}></TestCode>
-      <h1>Hello World</h1>
-      <h1>Hello {name}</h1>
-      <h1>---------------</h1>
-
-      {console.log(1)}
+     
+      {/* <Test2Code/> */}
+      <h3>Props-Profile Card</h3>
+      <ProfilePropsDisplay/>
+      <h3>Props-Destructing-Map-Profile Card</h3>
+      <ProfileMapDisplay/>
+      <h3>Props-Destructing-Map-Spread-Profile Card</h3>
+      <ProfileSpreadMapDisplay/>
     </div>
   )
 }
 
 export default App
+// class= class is reserved >>
+// className=
+// spread operator

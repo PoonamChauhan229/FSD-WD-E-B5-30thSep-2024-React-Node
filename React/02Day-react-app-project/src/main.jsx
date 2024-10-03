@@ -6,8 +6,8 @@ import './index.css'
 createRoot(document.getElementById('root')).render(
  <StrictMode>
   {/* <App /> // function call */}
-   {App()} 
+   {/* {App()}  */}
    <App/>
-   <App></App>
+   {/* <App></App> */}
  </StrictMode>,
 )
