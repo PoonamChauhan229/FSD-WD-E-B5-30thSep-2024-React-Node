@@ -1,9 +1,12 @@
+import { BtnCounter } from "./BtnCounter"
+
 function ProfileCard({profilepic,name}){// destructing over the fly
     // const {profilepic,name}=props
     return(
         <div className="card">
             <img className="profileimg" src={profilepic} height={100} width={150}/>
             <h3>Name: {name}</h3>
+            <BtnCounter/>
         </div>
     )
 }

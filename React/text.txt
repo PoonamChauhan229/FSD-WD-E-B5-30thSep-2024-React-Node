@@ -73,4 +73,51 @@ Props >> Properties
 // reveice >> functions 
 
 
+Hooks>>
+
+React Variables :
+let sum=45; JS Variable
+
+React State Variables
+>> useState Hooks
+
+Hooks ??
+Functions
+useState()// manage state
+
+//destructure 
+const [state]=useState(initial value)// args >> value
+initial value=""
+initial value=0
+initial value={}
+initial value=[]
+initial value=true
+initial value=false
+
+state >> React local Variable
+useState() >> returns an array
+[state]
+const [state]=useState("test")// default value u are 
+
+If we want to want to modify the state Variable
+const [state,setState]=useState("initialValue")
+setState("random")
+
+For xample
+
+function dbl(n){
+  console.log(n*2)
+}
+
+function useState(){
+  return [10,dbl]
+}
+
+const [state,setState]=useState()
+
+Build a like and dislike button
+👍  >>0 >> increase the val by 1 update the state
+👎  >>0 >> increase the val by 1 update the state
+
+
 

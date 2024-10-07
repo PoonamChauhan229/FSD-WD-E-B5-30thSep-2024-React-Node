@@ -1,21 +1,39 @@
-.App{
+*{
+    padding: 0;
+    margin: 0;
+}
+.moviePoster{
+    height:200px;
+    width:250px;
+    border:1px solid black;
+}
+.movieContainer{
+    border:1px solid black;
+    width:250px;
+    margin-bottom: 1%;
+    height: 275px;
+    
+}
+.movieSpecs{
     display: flex;
     justify-content: space-between;
-    width: 60%;
-    margin:0 auto;
-    border:4px solid green;
-    padding: 3%;
+    /* border:1px solid black; */
 }
-h3{
-    text-align: center;   
-    margin:0;
+/* .summary{
+    font-size: 13.5px;
+} */
+.movieDisplay{
+    display: flex;
+    gap:20px;
+    flex-wrap: wrap;
+    width:70%;
+    margin:1% auto;
 }
-.profileimg{
-    height: 150px;
-    width: 150px;
-    border:1px solid green;
-    border-radius: 55%;
-}
+/* .rating{
+    color:green
+} */
+
+
 .btnLikeDisLike{
     /* border: 1px solid red; */
     text-align: center;

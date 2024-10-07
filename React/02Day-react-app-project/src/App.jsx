@@ -4,6 +4,8 @@ import ProfilePropsDisplay from './Components/ProfilePropsDisplay'
 import Test2Code from './Components/Test2Code'
 import ProfileMapDisplay from './Components/ProfileMapDisplay'
 import ProfileSpreadMapDisplay from './Components/ProfileSpreadMapDisplay'
+import {BtnCounter} from './Components/BtnCounter'
+import { TodosAPI } from './Components/TodosAPI'
 
 function App() {
  
@@ -12,12 +14,14 @@ function App() {
     <div>
      
       {/* <Test2Code/> */}
-      <h3>Props-Profile Card</h3>
+      {/* <h3>Props-Profile Card</h3>
       <ProfilePropsDisplay/>
       <h3>Props-Destructing-Map-Profile Card</h3>
       <ProfileMapDisplay/>
       <h3>Props-Destructing-Map-Spread-Profile Card</h3>
-      <ProfileSpreadMapDisplay/>
+      <ProfileSpreadMapDisplay/> */}
+      {/* Api call */}
+      <TodosAPI/>
     </div>
   )
 }
