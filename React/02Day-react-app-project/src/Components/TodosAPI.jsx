@@ -37,9 +37,7 @@ export const TodosAPI=()=>{
             <h1>Heelo World</h1>
             <p>
                 {
-                    postval.map((element)=>(
-                         <p>Title-{element.title} </p>
-                    ))
+                    postval.map((element,index)=><p key={index}>Title-{element.title} </p>)
                 }
             </p>
         </>

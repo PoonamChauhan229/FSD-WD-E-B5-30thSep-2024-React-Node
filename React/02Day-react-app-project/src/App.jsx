@@ -6,7 +6,9 @@ import ProfileMapDisplay from './Components/ProfileMapDisplay'
 import ProfileSpreadMapDisplay from './Components/ProfileSpreadMapDisplay'
 import {BtnCounter} from './Components/BtnCounter'
 import { TodosAPI } from './Components/TodosAPI'
-
+import UseRefExample from './Components/UseRefExample'
+import UseMemoExample from './Components/UseMemoExample'
+import { BasicForm } from './Components/BasicForm'
 function App() {
  
   
@@ -19,9 +21,13 @@ function App() {
       <h3>Props-Destructing-Map-Profile Card</h3>
       <ProfileMapDisplay/>
       <h3>Props-Destructing-Map-Spread-Profile Card</h3>
-      <ProfileSpreadMapDisplay/> */}
+      */}
+       {/* <ProfileSpreadMapDisplay/>  */}
       {/* Api call */}
-      <TodosAPI/>
+      {/* <TodosAPI/> */}
+      {/* <UseRefExample/> */}
+      {/* <UseMemoExample/> */}
+      <BasicForm/>
     </div>
   )
 }

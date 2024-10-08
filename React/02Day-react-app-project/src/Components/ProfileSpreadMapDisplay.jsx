@@ -25,7 +25,7 @@ function ProfileSpreadMapDisplay(){
         <>
             <div className="App">
                 {
-                    profileArray.map((element,index)=><ProfileCard {...element}/>)
+                    profileArray.map((element,index)=><ProfileCard {...element} key={index}/>)
                 }
                 
             </div>
