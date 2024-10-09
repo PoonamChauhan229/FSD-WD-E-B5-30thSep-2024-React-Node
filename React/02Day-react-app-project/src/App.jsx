@@ -6,9 +6,11 @@ import ProfileMapDisplay from './Components/ProfileMapDisplay'
 import ProfileSpreadMapDisplay from './Components/ProfileSpreadMapDisplay'
 import {BtnCounter} from './Components/BtnCounter'
 import { TodosAPI } from './Components/TodosAPI'
-import UseRefExample from './Components/UseRefExample'
-import UseMemoExample from './Components/UseMemoExample'
+import UseRefExample from './Components/Hooks/UseRefExample'
+import UseMemoExample from './Components/Hooks/UseMemoExample'
 import { BasicForm } from './Components/BasicForm'
+import { UseReducerExample } from './Components/Hooks/UseReducerExample'
+import { UseStateExample } from './Components/Hooks/UseStateExample'
 function App() {
  
   
@@ -27,7 +29,11 @@ function App() {
       {/* <TodosAPI/> */}
       {/* <UseRefExample/> */}
       {/* <UseMemoExample/> */}
-      <BasicForm/>
+      {/* <BasicForm/> */}
+
+      {/* <UseReducerExample/> */}
+      <UseStateExample/>
+
     </div>
   )
 }

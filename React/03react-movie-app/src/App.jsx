@@ -1,6 +1,11 @@
 import './App.css'
+import About from './Components/About';
+import Home from './Components/Home';
 import { MovieDisplay } from './Components/MovieDisplay'
 import {useState} from 'react'
+import Navbar from './Components/Navbar';
+import { Route, Routes } from 'react-router-dom';
+import Page404 from './Components/Page404';
 
 function App() {  
 
@@ -80,10 +85,17 @@ function App() {
   console.log(allmovies)
   return (
     <>
-      {/* JSX >> 1 JSX */}
-      <MovieDisplay allmovies={allmovies} setAllmovies={setAllmovies}/>
+    <Navbar/>    
+    <Routes>
+      <Route path="/" element={<Home/>}/> 
+      <Route path='/about' element={<About/>}/>   
+      <Route path='/allmovies' element={<MovieDisplay allmovies={allmovies} setAllmovies={setAllmovies}/>}/>
+      <Route path='*' element={<Page404/>}/>
+    </Routes>
     </>
   )
 }
 
 export default App
+
+// <BrowserRouter><Routes><Route path="" element={<Component/>}/></Routes></BrowserRouter>
