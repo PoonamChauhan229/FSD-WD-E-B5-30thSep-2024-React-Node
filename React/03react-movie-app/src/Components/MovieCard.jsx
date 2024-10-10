@@ -7,13 +7,14 @@ export function MovieCard({name,poster,rating,summary}){
         // color:"green"
         color:rating<=8?"red":"green"// conditional styling
     }
+   
     return(
         <>
             <div className="movieContainer">
                 <img src={poster} alt="" className="moviePoster"/>
                 <div className="movieSpecs">
                     <h5 className="movieName" style={nameStyle}>{name}</h5>
-                   <BtnCounter/>
+                     <BtnCounter/>
                     <h5 className="rating" style={ratingStyle}>⭐{rating}</h5>
                     
                 </div>

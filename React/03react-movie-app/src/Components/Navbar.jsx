@@ -1,4 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
+import Button from '@mui/material/Button';
+
 // useNavigate() >> Hook
 const Navbar = () => {
     const navigate=useNavigate()
@@ -18,13 +20,12 @@ const Navbar = () => {
         <div><Link to='/' style={navStyle}>Home</Link></div>
         <div><Link to='/about' style={navStyle}>About</Link></div>
         <div><Link to ='/allmovies' style={navStyle}>All Movies</Link></div>
-        <div><button style={{color:"white"}}
-        onClick={()=>navigate('/about')}// route should be preseent in APP.jsx
-        >About-Nav</button></div>
+        <Button variant="text" onClick={()=>{navigate('/addmovie')}}>Add Movie</Button>
 
-        <div onClick={()=>navigate('/')}>Home-Nav</div>
+
+        {/* <div onClick={()=>navigate('/')}>Home-Nav</div>
         <div onClick={()=>navigate('/about')}>About-Nav</div>
-        <div onClick={()=>navigate('/allmovies')}>All Movies-Nav</div> 
+        <div onClick={()=>navigate('/allmovies')}>All Movies-Nav</div>  */}
         
         </div> 
     

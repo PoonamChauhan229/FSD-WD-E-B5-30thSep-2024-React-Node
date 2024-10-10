@@ -5,7 +5,7 @@ export const MovieDisplay=({allmovies,setAllmovies})=>{
     return(
         <div className="movieDisplay">
             {
-                allmovies.map((element,index)=>(
+                allmovies?.map((element,index)=>(
                     <MovieCard {...element}/>
                 ))
             }
