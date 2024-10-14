@@ -11,6 +11,8 @@ import UseMemoExample from './Components/Hooks/UseMemoExample'
 import { BasicForm } from './Components/BasicForm'
 import { UseReducerExample } from './Components/Hooks/UseReducerExample'
 import { UseStateExample } from './Components/Hooks/UseStateExample'
+import {MainParent01} from './Components/PropDrilling/MainParent01'
+import { UseMainParent01 } from './Components/Hooks/UseContext/SubFiles/UseMainParent01'
 function App() {
  
   
@@ -32,8 +34,10 @@ function App() {
       {/* <BasicForm/> */}
 
       {/* <UseReducerExample/> */}
-      <UseStateExample/>
+      {/* <UseStateExample/> */}
 
+        <MainParent01/>
+        <UseMainParent01/>
     </div>
   )
 }
