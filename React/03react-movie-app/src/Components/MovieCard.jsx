@@ -1,30 +1,44 @@
 import { IconButton } from '@mui/material';
 import {BtnCounter} from './BtnCounter'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../utils/cartContext';
-export function MovieCard({name,poster,rating,summary}){
+
+
+import axios from 'axios';
+
+export function MovieCard({name,poster,rating,summary,id,deleteBtn,editBtn}){
+    //console.log(id)
     const [cartUctxt,setCartUctxt]=useContext(CartContext)
+    const [allmovies,setAllmovies]=useState([])
     const nameStyle={
         color:"black"
     }
     const ratingStyle={
         // color:"green"
         color:rating<=8?"red":"green"// conditional styling
-    }   
+    } 
+      
+    //fetch
     return(
         <>
             <div className="movieContainer">
                 <img src={poster} alt="" className="moviePoster"/>
                 <div className="movieSpecs">
                     <h5 className="movieName" style={nameStyle}>{(name.length<12)?name:(name.substring(0, 12)+"...")}</h5>
-                     <BtnCounter/>
-                     <IconButton color="secondary" aria-label="add to shopping cart"
+                    <BtnCounter/>
+                    <IconButton color="secondary" aria-label="add to shopping cart"
                      onClick={()=>{
                         setCartUctxt(cartUctxt+1)
                      }}
                      >  <AddShoppingCartIcon />
-                        </IconButton>
+                    </IconButton>
+
+                    
+                     {/* DElete btn */}
+                     {deleteBtn} {editBtn}
+                    
+
                     <h5 className="rating" style={ratingStyle}>⭐{rating}</h5>
                     
                 </div>

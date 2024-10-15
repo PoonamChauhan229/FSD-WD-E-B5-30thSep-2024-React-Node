@@ -4,25 +4,49 @@ import TextField from '@mui/material/TextField';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useNavigate } from 'react-router-dom';
-export const AddMovie=()=>{
+import { useNavigate, useParams } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+
+export const EditMovie=()=>{
+    const {id}=useParams() // returns an object {id: 3}
+    const [singleMovie,setSingleMovie]=useState(null)
+    //console.log(id)
+    const fetchEditMovie=async()=>{
+        const res=await axios.get(`https://670760d2a0e04071d22a0624.mockapi.io/movie/movie/${id}`)
+        console.log(res.data)
+        setSingleMovie(res.data)
+        formik.setValues(res.data)
+    }
+    useEffect(()=>{
+        fetchEditMovie()
+    },[])
+    
+    console.log(singleMovie)
     const navigate=useNavigate()
+    // const {name}=singleMovie
+ 
     const formik=useFormik({
         initialValues:{name:"",poster:"",rating:"",summary:"",trailer:""},
         onSubmit:(values)=>{
             console.log(values)
-            postMovie(values)
+            updateMovie(values)
         }
     })
+    
     console.log(formik)
-    //post method axios
-    const postMovie=async(newmovie)=>{
-        let res=await axios.post('https://670760d2a0e04071d22a0624.mockapi.io/movie/movie',newmovie)
+    //put method axios
+    const updateMovie=async(movie)=>{
+        let res=await axios.put(`https://670760d2a0e04071d22a0624.mockapi.io/movie/movie/${id}`,movie)
         console.log(res)
         console.log(res.data)
     }
     return(
+        <>
+        <input type="text" name="" id="" value={singleMovie?.name}/>
+        <input type="text" name="" id="" value={singleMovie?.poster}/>
+
         <Box sx={{border:"1px solid red",width:"40%"}}>
+            Test{id} 
          <Box
             component="form"
             onSubmit={formik.handleSubmit}
@@ -58,17 +82,19 @@ export const AddMovie=()=>{
              value={formik.values.trailer}
              onChange={formik.handleChange} 
             />
-            <Button variant="contained" size="small" type='submit'>
-            Add Movie
+            <Button variant="contained" size="small" type='submit'
+            >
+            Update Movie
             </Button>
             <Button variant="contained" size="small" type='submit'
             onClick={()=>navigate('/allmovies')}
             >
-                
-                <ArrowBackIosIcon/>
+            <ArrowBackIosIcon/>
             Back
             </Button>
     </Box>
         </Box>
+
+        </>
     )
 }

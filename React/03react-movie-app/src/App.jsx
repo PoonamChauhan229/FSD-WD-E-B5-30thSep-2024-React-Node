@@ -6,12 +6,13 @@ import {useEffect, useState} from 'react'
 import Navbar from './Components/Navbar';
 import { Route, Routes } from 'react-router-dom';
 import Page404 from './Components/Page404';
-import axios from 'axios';
+
 import { AddMovie } from './Components/AddMovie';
 import { CartContext } from './utils/cartContext';
+import { EditMovie } from './Components/EditMovie';
 
 function App() { 
-  const [allmovies,setAllmovies]=useState([])
+ 
   const [cartUctxt,setCartUctxt]=useState(0)
   // using fetch
   // const getMovie=async()=>{
@@ -21,15 +22,7 @@ function App() {
   //   setAllmovies(data)
   // }
 
-  // using axios
-  const getMovie=async()=>{
-    let res=await axios.get("https://670760d2a0e04071d22a0624.mockapi.io/movie/movie")   
-    console.log("FROM AXIOS",res.data)
-    setAllmovies(res.data)
-  }
-  useEffect(()=>{
-    getMovie()
-  },[])
+  
  
   return (
     <>
@@ -38,8 +31,9 @@ function App() {
     <Routes>
       <Route path="/" element={<Home/>}/> 
       <Route path='/about' element={<About/>}/>   
-      <Route path='/allmovies' element={<MovieDisplay allmovies={allmovies} setAllmovies={setAllmovies}/>}/>
+      <Route path='/allmovies' element={<MovieDisplay/>}/>
       <Route path='/addmovie' element={<AddMovie/>}/>
+      <Route path='/edit/:id' element={<EditMovie/>}/>
       <Route path='*' element={<Page404/>}/>
     </Routes>
     </CartContext.Provider>
