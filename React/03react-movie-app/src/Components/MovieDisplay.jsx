@@ -34,6 +34,7 @@ export const MovieDisplay=()=>{
             {
                 allmovies?.map((element,index)=>(
                     <MovieCard {...element}
+                    elementMovies={element}
                     key={element.id}
                     deleteBtn={                        
                         <IconButton color="error" aria-label=""                   

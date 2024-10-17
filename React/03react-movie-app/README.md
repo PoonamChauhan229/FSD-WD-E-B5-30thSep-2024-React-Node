@@ -78,3 +78,40 @@ Movies:
     "trailer": "https://www.youtube.com/embed/NgsQ8mVkN8w"
   }
 ]
+
+Tailwind CLI:
+_________________________________________
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+
+__________________________________
+tailwind.config.js
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+     "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+__________________________
+index.css
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+React Bootstrap:
+npm install react-bootstrap bootstrap
+____________________________________________
+
+main.jsx
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+

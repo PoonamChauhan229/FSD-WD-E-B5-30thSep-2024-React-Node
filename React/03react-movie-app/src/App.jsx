@@ -10,6 +10,7 @@ import Page404 from './Components/Page404';
 import { AddMovie } from './Components/AddMovie';
 import { CartContext } from './utils/cartContext';
 import { EditMovie } from './Components/EditMovie';
+import { CartPage } from './Components/CartPage';
 
 function App() { 
  
@@ -34,6 +35,7 @@ function App() {
       <Route path='/allmovies' element={<MovieDisplay/>}/>
       <Route path='/addmovie' element={<AddMovie/>}/>
       <Route path='/edit/:id' element={<EditMovie/>}/>
+      <Route path='/cartpage' element={<CartPage/>}/>
       <Route path='*' element={<Page404/>}/>
     </Routes>
     </CartContext.Provider>

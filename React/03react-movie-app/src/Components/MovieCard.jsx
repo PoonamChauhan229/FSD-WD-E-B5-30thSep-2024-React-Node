@@ -3,12 +3,14 @@ import {BtnCounter} from './BtnCounter'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../utils/cartContext';
-
-
+import AgricultureIcon from '@mui/icons-material/Agriculture';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/cartSlice';
 
-export function MovieCard({name,poster,rating,summary,id,deleteBtn,editBtn}){
+export function MovieCard({name,poster,rating,summary,id,deleteBtn,editBtn,elementMovies}){
     //console.log(id)
+    const dispatch=useDispatch()
     const [cartUctxt,setCartUctxt]=useContext(CartContext)
     const [allmovies,setAllmovies]=useState([])
     const nameStyle={
@@ -18,6 +20,12 @@ export function MovieCard({name,poster,rating,summary,id,deleteBtn,editBtn}){
         // color:"green"
         color:rating<=8?"red":"green"// conditional styling
     } 
+    const handleItem=()=>{
+        console.log("Adding Items to the Store...",elementMovies)
+        //perform here an action >> dipatch an action
+        // useDipatch hook  >> dispatch an action
+        dispatch(addItem(elementMovies))
+    }
       
     //fetch
     return(
@@ -26,7 +34,7 @@ export function MovieCard({name,poster,rating,summary,id,deleteBtn,editBtn}){
                 <img src={poster} alt="" className="moviePoster"/>
                 <div className="movieSpecs">
                     <h5 className="movieName" style={nameStyle}>{(name.length<12)?name:(name.substring(0, 12)+"...")}</h5>
-                    <BtnCounter/>
+                   
                     <IconButton color="secondary" aria-label="add to shopping cart"
                      onClick={()=>{
                         setCartUctxt(cartUctxt+1)
@@ -37,12 +45,20 @@ export function MovieCard({name,poster,rating,summary,id,deleteBtn,editBtn}){
                     
                      {/* DElete btn */}
                      {deleteBtn} {editBtn}
+                     {/*  create a icon >> Video on the page */}
                     
 
                     <h5 className="rating" style={ratingStyle}>⭐{rating}</h5>
                     
                 </div>
-                <p className="summary" style={{color:"navy",fontSize: "14px"}}>{summary.substring(0, 100)+"..."}</p>
+                <div style={{display:"flex",gap:"70%"}}>
+                <AgricultureIcon color="primary" 
+                onClick={()=>{handleItem()}}
+                />     
+                <BtnCounter/>
+                </div>
+              
+                {/* <p className="summary" style={{color:"navy",fontSize: "14px"}}>{summary.substring(0, 100)+"..."}</p> */}
             </div>            
         </>
     )

@@ -5,9 +5,13 @@ import { Badge, IconButton, Stack } from '@mui/material';
 import { useContext } from 'react';
 import { CartContext } from '../utils/cartContext';
 import AnchorIcon from '@mui/icons-material/Anchor';
+import AgricultureIcon from '@mui/icons-material/Agriculture';
+import { useSelector } from 'react-redux';
 
 // useNavigate() >> Hook
 const Navbar = () => {
+  const cartItems=useSelector(store=>store.cart.items)
+  console.log("FROM Store",cartItems,cartItems.length)
   const cartVal=useContext(CartContext)
     const navigate=useNavigate()
     const navStyle={color:'white',textDecoration:"none"}
@@ -28,6 +32,12 @@ const Navbar = () => {
       
         <Badge badgeContent={cartVal} color="success" sx={{marginTop:"3%"}}>
           <AddShoppingCart color="secondary" />
+        </Badge>
+
+        <Badge badgeContent={cartItems.length} color="error" sx={{marginTop:"3%"}}>
+          <AgricultureIcon color="primary" 
+          onClick={()=>{navigate('/cartpage')}}
+          />
         </Badge>
 
 
