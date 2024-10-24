@@ -1,0 +1,119 @@
+DATABASE
+
+
+MYSQL
+ > TABLES
+    USER TABLE
+    PRODUCTS TABLE
+1 RECORD >> ROW 
+
+MONGODB
+  > COLLECTION  
+     USER COLLECTION
+     PRODUCTS COLLECTION
+    
+1 RECORD >> DOCUMENT (BSON DATA)
+
+show dbs
+admin
+config
+local
+
+>>> system Database
+
+We have create our db >>> inside >> own collections
+
+use fsdwdeb5
+
+>> switch db >> it wont show empty Database
+>> atleast u need to have 1 collection
+
+Syntax:
+db.createCollection("collectionName")
+db.createCollection("users")
+db.createCollection("sales")
+
+show collections
+
+
+//Collections >>> NO DATA
+users>
+
+insert the data 
+
+insertOne({}) || insertMany([])
+
+Syntax:
+db.collectionName.insertOne({})
+db.collectionName.insertMany([])
+
+// Guvi
+Name
+email
+contact_num
+gender
+age
+
+db.users.insertOne({name:"guvi",email:"guvi@gmail.com",age:10,contact_num:3456789})
+insert your name >>> insertOne
+db.users.insertOne({name:"Madhu",email:"madhu@gmail.com",gender:"Male",age:10,contact_num:345709090})
+
+db.users.insertMany([
+    {name:"guvi",email:"guvi@gmail.com",age:10,contact_num:3456789},
+    {name:"Harish",email:"harish@gmail.com",age:10,gender:"Male",contact_num:4567987},
+    {name:"Neeraj",email:"Neeraj@gmail.com",age:10,gender:"Male"},
+    {name:"Indu",email:"Indu@gmail.com",age:10,gender:"Female",contact_num:098765},
+    {name:"Anjali",email:"Anjali@gmail.com",gender:"Female",age:10,contact_num:1234098},
+    {name:"Dinesh",email:"Dinesh@gmail.com",gender:"Male",age:10},
+    {name:"Firoz",email:"Firoz@gmail.com",gender:"Male",age:10,contact_num:1234509093},
+    {name:"Omprakash",email:"Omprakash@gmail.com",gender:"Male",age:10}
+])
+
+|| where clause
+findOne({}) || find({})
+db.users.find({})
+
+// name:"guvi"
+db.users.findOne({name:"guvi"})
+db.users.find({name:"guvi"})
+db.users.find({gender:"Male"})
+db.users.find({gender:"Feale"})
+
+Projections
+db.users.find({gender:"Male"},{name:1,_id:0,gender:1})
+db.users.find({gender:"Male"},{name:1,gender:1})
+db.users.find({gender:"Male"},{name:1,_id:0,gender:1})
+db.users.find({gender:"Male"},{name:1,_id:0})
+db.users.find({gender:"Male"},{name:1})
+db.users.find({gender:"Male"},{name:1})
+
+UPDATE
+updateOne({condition-feild:value},{$set:{feild:value}})
+db.users.updateOne({age:10},{$set:{age:20}})
+db.users.updateMany({age:10},{$set:{age:30}})
+
+DELETE
+deleteOne({})
+ db.users.deleteOne({age:30})
+ db.users.deleteMany({age:30})
+
+
+// comparision Query :
+$eq 
+$ne
+$gte
+$gt
+$lt
+$lte
+$in
+$nin
+db.users.find({name:{$eq:"Harish"}})
+db.users.find({name:{$ne:"guvi"}})
+db.users.find({name:{$ne:"guvi"}},{name:1,_id:0})
+
+ db.users.find({name:{$in:["Harish","Anjali"]}})
+  db.users.find({name:{$nin:["Harish","Anjali"]}})
+
+
+
+

@@ -1,0 +1,135 @@
+fsdwdeb5 >> Collections >>
+
+movies
+orders
+products
+sales
+users
+
+find()
+
+Find all the movies from the movies Collections
+Find all the orders from the orders Collections
+Find all the products from the products Collections
+Find all the sales from the sales Collections
+Find all the users from the users Collections
+
+db.sales.find({})
+db.movies.find({})
+db.orders.find({})
+db.products.find({})
+db.users.find({})
+
+_______________________
+
+users collection >>
+name -John
+
+sales collections >> Americanos
+
+db.users.find({ "name": "John" })
+db.users.find({ name: { $eq: "John" }})
+
+db.sales.find({ "item": "Americanos" })
+db.sales.find({ "item": { $eq: "Americanos" }})
+
+db.sales.find({ "price": { $gt: 10 }});
+db.sales.find({quantity:{$gt:15}});
+
+db.orders.find({ orderAmount: { $gt: 250 }});
+db.orders.find({orderAmount:{$lte:400}})
+
+in sales collectiosn >>> you have to find Americanos no 
+
+short , tall both >>
+
+white , black exculding this >>products collection
+db.products.find({ "color": { $nin: ["white", "black"] }})
+
+exculding >> spec of ram 4, 8,16
+
+db.products.find({"spec.ram":{$nin:["4","8","16"]}})
+
+
+Logical Operators:
+
+AND : MUST 
+OR  : ANY ONE condition
+NOR :
+NOT
+
+users > age :28 & name :John
+
+$and:[{},{}]
+db.users.find({$and:[{"name":"John"},{"age":28}]});
+
+age: gt >>30  name : "Alice"
+
+db.users.find({$and:[
+    {"name":{$eq:"Alice"}},
+    {"age":{$gt:30}}
+]});
+
+db.users.find({$or:[
+    {"name":{$eq:"Alice"}},
+    {"age":{$gt:30}}
+]});
+
+$or
+db.users.find({ $or: [ 
+        { "name": { $eq: "Firoz" }},
+        { "age": { $gt: 50 }}
+    ]});
+
+db.users.find({ $or: [
+        { "name": { $eq: "Firoz" }},
+        { "age": { $gt: 30 }}
+     ]});
+
+db.users.find({$or:[
+  {"name":{$eq:"Alice"}},
+  {"age":{$gt:30}}
+]});
+
+$nor: none of the condition matches
+db.users.find({$nor:[
+  {"name":{$eq:"Alice"}},
+  {"age":{$gt:30}}
+]});
+
+db.users.find({ $nor: [
+        { "name": { $eq: "Firoz" }},
+        { "age": { $lte: 10 }}
+     ]});
+
+1 condition + comparision Operators
+
+db.users.find({"name":{$not:{$eq:"guvi"}}});
+
+
+Few Questions:
+products:
+excluding xPhone price :899
+
+excluding price  gt 700 spec of ram >> 4 
+Any one of them 
+
+order > not >> items >> Tablet
+
+
+limit
+db.users.find({}).limit(5)
+db.users.find({}).limit(2)
+
+sort: asc(1) desc(-1)
+   .sort({age:1}) 
+
+
+db.users.find({},{_id:0,age:1}).sort({age:1})
+db.users.find({},{_id:0,age:1}).sort({age:-1})
+
+db.users.find({},{_id:0,age:1}).sort({age:-1}).limit(5)
+
+skip()
+db.users.find({},{_id:0,age:1}).sort({age:-1}).skip(2)
+db.users.find({},{_id:0,age:1}).sort({age:-1}).skip(2).limit(5)

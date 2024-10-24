@@ -76,3 +76,89 @@ FROM movies
 INNER JOIN boxoffice 
 ON movies.id = boxoffice.movie_id
 order by rating desc
+
+
+EX9:
+Q1:
+SELECT title,(domestic_sales+international_sales)/1000000 as TOTAL_SALES
+FROM movies
+INNER JOIN boxoffice
+ON movies.id =boxoffice.movie_id
+
+Q2:
+SELECT title,(rating*10) AS RATING_PERCENTAGE
+FROM movies
+INNER JOIN boxoffice
+ON movies.id =boxoffice.movie_id
+
+Q3:
+SELECT title,YEAR
+FROM movies
+WHERE YEAR%2=0
+
+Ex10:
+Q1:
+SELECT Max(years_employed) FROM employees;
+
+Q2:
+SELECT role, avg(years_employed) FROM employees group by role;
+
+Q3:
+SELECT building, sum(years_employed) FROM employees group by building;
+
+Ex13:
+INSERT into movies (title,director)
+VALUES("Toy Story 4","Guvi Geek");
+
+INSERT into BoxOffice
+VALUES(15, 8.7,(340*100000),(270*100000));
+
+EX14:
+Q1:
+UPDATE MOVIES
+SET DIRECTOR="John Lasseter"
+WHERE TITLE="A Bug's Life"
+
+Q2:
+UPDATE MOVIES
+SET YEAR=1999
+WHERE TITLE="Toy Story 2"
+
+Q3:
+UPDATE MOVIES
+SET TITLE="Toy Story 3",DIRECTOR="Lee Unkrich"
+WHERE TITLE="Toy Story 8"
+
+EX15:
+Q1:
+DELETE FROM movies
+WHERE YEAR <2005;
+
+Q2:
+DELETE FROM movies
+WHERE DIRECTOR="Andrew Stanton";
+
+EX16:
+Q1:
+CREATE TABLE Database(
+    Name TEXT,
+    Version FLOAT,
+    Download_count INTEGER
+)
+EX17:
+Q1:
+ALTER TABLE movies
+ADD Aspect_ratio FLOAT
+//DEFAULT 8.5;
+
+Q2:
+ALTER TABLE movies
+ADD Language TEXT
+DEFAULT "English";
+
+EX18:
+Q1:
+DROP TABLE MOVIES;
+
+Q2:
+DROP TABLE BoxOffice;
