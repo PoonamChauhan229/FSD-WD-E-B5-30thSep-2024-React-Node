@@ -1,0 +1,21 @@
+Create a Folder
+>> initialize ur project
+ npm init -y  >> package.json
+
+>> create a root file 
+    - index.js|server.js|main.js|app.js || your own choice
+
+>> Necesssary installation 
+   npm i express  >> node_modules + packagelock.json
+
+>>.gitignore 
+
+>> npm i nodemon
+
+>>update the package.json
+"scripts": {
+    "start":"node index.js",
+    "dev":"nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
