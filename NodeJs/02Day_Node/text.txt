@@ -19,3 +19,14 @@ Create a Folder
     "test": "echo \"Error: no test specified\" && exit 1"
   },
 
+
+// cors
+Cross-origin resource sharing (CORS)
+
+>> server >> 8000
+>> UI     >> 5173
+
+>> CORS 
+>> dotenv  >> environmnet variables >> 
+>> .env file >> strore ur cruicial || important 
+>> .gitignore

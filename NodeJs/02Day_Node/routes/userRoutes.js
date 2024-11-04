@@ -54,20 +54,43 @@ router.get('/users/:id',async(req,res)=>{
 router.put('/users/:id',async(req,res)=>{
     //where you want?
     //what you want ?
-    
-    const updateUser=await User.findByIdAndUpdate(req.params.id,req.body,
-        {new:true,runValidators:true}
-    )
-    res.send(updateUser)
-})
+        try{
+            console.log(req.params)
+            // let getUser = await User.find({_id:req.params.id})
+            const updateUser = await User.findByIdAndUpdate(req.params.id,req.body,
+                {new:true,runValidators:true}
+                )        
+                if(!updateUser){
+                return res.status(400).send({"message":"User with this Id is not found"})
+            }
+           
+            res.status(200).send(updateUser)
+        }
+        catch(e){
+            res.status(500).send({"message":"Some Internal Error"})
+        }
+        
+    })
 
 //delete
-router.delete('/users/:id',async(req,res)=>{
-    let deleteUser=await User.findByIdAndDelete(req.params.id)
-    res.send({
-        "message":"Deleted Suceessfully",
-        deleteUser
-    })
-})
+router.delete('/users/:id', async (req, res) => {
+    try {
+        const deleteUser = await User.findByIdAndDelete(req.params.id);
+        if (!deleteUser) {
+            return res.status(400).send({"message": "User with this Id is not found" });
+        }
+        res.status(200).send({
+            "message": "Deleted Successfully",
+            deleteUser
+        });
+    }catch (e) {
+        res.status(500).send({"message": "Some Internal Error" });
+    }
+});
 
 module.exports=router
+
+
+//jwt dotenv cors bcrypt
+// user relationship
+
