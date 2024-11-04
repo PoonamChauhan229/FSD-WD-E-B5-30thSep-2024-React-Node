@@ -1,6 +1,8 @@
 const mongoose=require('mongoose')
 const validator=require('validator')
-const userSchema={
+const jwt=require('jsonwebtoken')
+
+const userSchema=new mongoose.Schema({
     // define your schema
     name:{
         type:String,
@@ -47,6 +49,16 @@ const userSchema={
           }
         }
       }
+})
+
+userSchema.methods.generateAuthToken = async function() {
+  const user = this;
+  
+  // Generate the token
+  const token = jwt.sign({ _id: user._id}, "thisismycourse");
+//  console.log(token)
+  return token;
 }
 const User=mongoose.model('User',userSchema)
+
 module.exports=User

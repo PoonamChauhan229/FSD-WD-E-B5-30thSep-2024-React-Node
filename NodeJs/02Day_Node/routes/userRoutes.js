@@ -5,6 +5,7 @@ const router=express.Router()
 //error comes >> handle out properly 
 // try catch || if else 
 // post methods >>
+//signup
 router.post('/adduser',async(req,res)=>{
     try{
         //console.log(req.body)
@@ -15,6 +16,26 @@ router.post('/adduser',async(req,res)=>{
     catch(e){
         res.status(500).send({"message":e})
     }
+})
+
+//signin Route
+router.post('/users/login',async(req,res)=>{
+    // email +password ||phone number
+    // email >> user >> userId >>generateToken>>
+    let user =await User.findOne({email:req.body.email})
+    // res.send(user)
+    if(user){
+        const token=await user.generateAuthToken()
+        console.log(token)
+        res.send({
+            message:"User LoggedIn successfuly with email",
+            user,
+            token
+        })
+    }else{
+        res.send("Check ur Crendentials")
+    }
+
 })
 
 //getAll User  >> try catch || if else 
