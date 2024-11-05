@@ -13,6 +13,29 @@ const app=express()
 const PORT=8000;
 app.use(cors())
 connection()
+app.use(express.json())
+
+// register middleware
+// app.use((req,res,next)=>{
+//     console.log(req.method,req.path)
+//     next()
+// })
+
+// block all the get req
+// app.use((req,res,next)=>{
+//    if(req.method=="GET"){
+//     res.send("You are not allowed")
+//    }else{
+//         next()
+//    }
+    
+// })
+
+// Currently sever is maintance
+// app.use((req,res,next)=>{    
+//      res.send("Server is under Maintainace, currenlty down , visit after 2 hrs")   
+     
+//  })
 // root end point
 app.get('/',(req,res)=>{
     res.send("Welcome to the App!!!")
@@ -44,7 +67,7 @@ app.get('/',(req,res)=>{
 app.get('/home',(req,res)=>{
     res.send("Home Page")
 })
-app.use(express.json())
+
 app.use(userRoutes)
 
 // we make it listen to the port

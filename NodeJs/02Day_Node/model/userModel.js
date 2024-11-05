@@ -55,7 +55,7 @@ userSchema.methods.generateAuthToken = async function() {
   const user = this;
   
   // Generate the token
-  const token = jwt.sign({ _id: user._id}, "thisismycourse");
+  const token = jwt.sign({ _id: user._id}, process.env.SECRET_KEY);
 //  console.log(token)
   return token;
 }

@@ -1,4 +1,6 @@
 const User=require('../model/userModel')
+const auth=require('../middleware/auth')
+const bcrypt=require('bcryptjs')
 const express=require('express')
 const router=express.Router()
 
@@ -8,7 +10,17 @@ const router=express.Router()
 //signup
 router.post('/adduser',async(req,res)=>{
     try{
+
+        let user =await User.findOne({email:req.body.email})
+        if(user){
+           return res.send({message:"User Account already Exist"})
+        }
         //console.log(req.body)
+        console.log(req.body.password)
+        if(req.body.password){
+            req.body.password=await bcrypt.hash(req.body.password,8)
+            console.log(req.body.password)
+        }
         const newUser=new User(req.body)
         await newUser.save()
         res.status(200).send(newUser)
@@ -23,8 +35,16 @@ router.post('/users/login',async(req,res)=>{
     // email +password ||phone number
     // email >> user >> userId >>generateToken>>
     let user =await User.findOne({email:req.body.email})
+    if (!user) {
+        return res.status(400).send({ message: "User not found. Please check your credentials." });
+    }
+    const isValidPassword = await bcrypt.compare(req.body.password, user.password);
+
+    if (!isValidPassword) {
+        return res.status(400).send({ message: "Incorrect password. Please check your credentials." });
+    }
     // res.send(user)
-    if(user){
+    if(user && isValidPassword){
         const token=await user.generateAuthToken()
         console.log(token)
         res.send({
@@ -32,8 +52,6 @@ router.post('/users/login',async(req,res)=>{
             user,
             token
         })
-    }else{
-        res.send("Check ur Crendentials")
     }
 
 })
@@ -108,6 +126,20 @@ router.delete('/users/:id', async (req, res) => {
         res.status(500).send({"message": "Some Internal Error" });
     }
 });
+
+// User Profile >>
+router.get('/profile/me',auth,async(req,res)=>{
+    res.send({token:req.token,user:req.user})
+})
+
+// update Profile >>
+router.put('/profile/me',auth,async(req,res)=>{
+    // res.send({token:req.token,user:req.user})
+   const updateProfile= await User.findByIdAndUpdate(req.user._id,req.body,{new:true,runValidators:true})
+   res.send(updateProfile)
+})
+
+//delete ur profile
 
 module.exports=router
 
